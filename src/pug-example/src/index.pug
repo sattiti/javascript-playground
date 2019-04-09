@@ -1,0 +1,109 @@
+extends ./_layout.pug
+
+block formatter
+  - title = "hello world"
+  -const nav = {home:'/', about:'/about/', contact: '/contact/'}
+
+block header
+  h1=title
+  include ./_header.pug
+
+block contents
+  h2 If else if else
+  -const crt = 'home'
+  if crt === 'home'
+    p HOME #[em HOME] HOME HOME
+  else if crt === 'about'
+    p About About About
+  else
+    p contact
+
+  h2 Whitespace control
+  p
+    | HOME
+    |
+    em HOME
+    | HOME
+
+
+  h2 For
+  ul
+    -for(var i=0; i<10;i++)
+      //- unless
+      unless i === 1
+        -i = i+1
+      li(id=`li${i}`)=i
+
+
+  h2 While
+  -let n = 0;
+  ul
+    while n < 4
+      li= n++
+
+
+  h2 Multi attributes
+  .imgBk
+    img(
+      src=""
+      alt=""
+    )
+
+  h2 &attributes
+  .foo(data-bar="foo")&attributes({'data-foo': 'bar', class:'a b c'})
+    p foo
+
+
+  h2 Escape, Inline style
+  p(style={color:'red',"text-align":'left'})="<code>"
+
+  h2 Unescape
+  p="<script>console.log(1)</script>"
+  pre
+    code!="<script>console.log(1)</script>"
+
+  h2 Switch
+  -const num = 0
+  case num
+    when 0: p 0
+    when 1: p 1
+    default: p 2
+
+  case num
+    when 0
+      -break
+    when 1
+      p 111
+    default
+      p 222
+
+  h2 Plain text
+  <div><p>Plain html</p></div>
+
+  h2 Block Expansion
+  p: a: img(src="" alt="")/
+
+
+  h2 Mixin
+  mixin p(w="hello", ...items)
+    .bk0
+      p=w
+      if items.length > 0
+        ul
+          each item in items
+            li=item
+
+  -for(var i=0; i<2; i++)
+    +p('mixin' + i)
+    +p()
+  +p('aaa', 1, 2, 3, 4, 5)
+
+block footer
+  include ./_footer.pug
+ 
+block js
+  script(src="index.js")
+prepend js
+  script(src="jquery.js")
+append js
+  script(src="main.js")
