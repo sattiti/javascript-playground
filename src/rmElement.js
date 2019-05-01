@@ -3,7 +3,7 @@
   const evt = w.navigator.userAgent.toLowerCase().match(/iphone|ipad|android/img) ? 'touchmove' : 'dblclick';
   
   for(el of els){
-    if(el.hasAttributes('href')){
+    if(el.hasAttribute('href')){
       const href = el.getAttribute('href');
       el.setAttribute('href', '#'+href);
     };

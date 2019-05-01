@@ -11,7 +11,7 @@
   };
 
   for(el of els){
-    if(el.hasAttributes('href')){
+    if(el.hasAttribute('href')){
       let href = el.getAttribute('href');
       el.setAttribute('href', '#'+href);
     };
