@@ -1,7 +1,7 @@
 (function(w,d){
   var nodes = d.querySelectorAll('*');
 
-  function hexColor(){
+  function randomHexColor(){
     var v = '#';
     var c = (()=>{
       var a = Math.round(Math.ceil(Math.random() * parseInt(0xff))).toString(16);
@@ -63,7 +63,7 @@
       else{
         n.insertBefore(label, n.childNodes[0]||null);
       }
-      n.style.border = '2px solid ' + hexColor();
+      n.style.border = '2px solid ' + randomHexColor();
       n.style.margin = '5px';
     }
   }
