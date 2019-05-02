@@ -5,19 +5,13 @@
   function alertSrc(e){
     e.preventDefault();
     e.stopPropagation();
-
     let c = e.currentTarget;
     c.parentNode ?  alert(c.parentNode.outerHTML) : alert(c.outerHTML);
   };
 
   for(el of els){
-    if(el.hasAttribute('href')){
-      let href = el.getAttribute('href');
-      el.setAttribute('href', '#'+href);
-    };
-
     if(isPC){
-      el.addEventListener('dblclick', function(e){
+      el.addEventListener('click', function(e){
         alertSrc(e);
         return false;
       });
