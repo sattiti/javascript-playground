@@ -24,6 +24,14 @@
     const nw = w.open('');
     const nd = nw.document;
 
+    const doctype = document.implementation.createDocumentType('html', '', '');
+    if(nd.doctype){
+      nd.replaceChild(doctype, nd.doctype);
+    }
+    else{
+      nd.insertBefore(doctype, nd.childNodes[0]);
+    };
+
     /*
     Dracula Theme
     | Background   | #282a36 |
@@ -72,7 +80,7 @@ ul.ul1 li{width:49%;} \
 @media only screen and (max-width:767px){ \
 div#result{padding:0;} \
 ul.ul0 li{display:block;margin-right:0;box-sizing:border-box;text-align:center;margin-top:.5em;} \
-div.tb0 table tr th,div.tb0 table tr td{display:block;width:auto;} \
+div.tb0 table tr,div.tb0 table tr th,div.tb0 table tr td{display:block;width:100%;box-sizing:border-box;} \
 ul.ul1{display:block;justify-content:normal;} \
 ul.ul1 li{margin-top:1em;width:100%;display:block;} \
 } \
