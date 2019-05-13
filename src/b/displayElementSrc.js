@@ -1,6 +1,6 @@
 (function(w, d) {
   const els  = d.querySelectorAll("body *");
-  const isPC = w.navigator.userAgent.toLowerCase().match(/iphone|ipad|android/img) ? false : true;
+  const isPC = (function(ua){return (ua.indexOf('iphone')>0 || ua.indexOf('ipod')>0 || ua.indexOf('android')>0 && ua.indexOf('mobile')>0 || ua.indexOf('tizen')>0) ? false : true;})(w.navigator.userAgent.toLowerCase());
 
   function alertSrc(e){
     e.preventDefault();
