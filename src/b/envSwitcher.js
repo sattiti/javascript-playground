@@ -62,7 +62,8 @@
     const aCss = {
       color: '#f1fa8c',
       display: 'block',
-      padding: '4px'
+      padding: '4px',
+      fontFamily: 'YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",Meiryo,sans-serif'
     };
 
     const buttonCss = {
