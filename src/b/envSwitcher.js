@@ -1,10 +1,10 @@
 (function(w, d){
-  function localStorageInit(){
-    if(('localStorage' in w) && (w.localStorage !== null)){
-      return w.localStorage;
-    }
-    return false;
-  };
+  // function localStorageInit(){
+  //   if(('localStorage' in w) && (w.localStorage !== null)){
+  //     return w.localStorage;
+  //   }
+  //   return false;
+  // };
 
   function attachElement(doc, el){
     const t = doc.createElement(el.tag);
@@ -157,19 +157,18 @@
 
 
   const isPC    = (function(ua){return (ua.indexOf('iphone')>0 || ua.indexOf('ipod')>0 || ua.indexOf('android')>0 && ua.indexOf('mobile')>0 || ua.indexOf('tizen')>0) ? false : true;})(w.navigator.userAgent.toLowerCase());
-  const s       = localStorageInit();
+  // const s       = localStorageInit();
   let panel     = null;
   let isVisible = false;
-  const usage   = "{'NAME1':'DOMAIN1','NAME2':'DOMAIN2', ...}";
 
   const envNavEvt     = d.createEvent('HTMLEvents');
   const envNavEvtName = 'ENVNav';
   envNavEvt.initEvent(envNavEvtName, true, true);
 
-  if(!s){
-    alert('No Local Storage.');
-    return false;
-  };
+  // if(!s){
+  //   alert('No Local Storage.');
+  //   return false;
+  // };
 
   init();
   d.addEventListener(envNavEvtName, function(e){
