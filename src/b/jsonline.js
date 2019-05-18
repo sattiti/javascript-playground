@@ -39,8 +39,8 @@
     wrapper.style.position        = 'absolute';
     wrapper.style.left            = 0;
     wrapper.style.top             = 0;
-    wrapper.style.width           = w.innerWidth + 'px';
-    wrapper.style.height          = w.innerHeight + 'px';
+    wrapper.style.width           = a.innerWidth + 'px';
+    wrapper.style.height          = a.innerHeight + 'px';
     wrapper.style.zIndex          = 999999;
 
     el.textContent = msg;
@@ -65,7 +65,6 @@
     el.style.left = ((a.innerWidth * .5) - el.offsetWidth *.5).toString() + 'px';
 
     setTimeout(function(){
-      el.remove();
       wrapper.remove();
     }, period);
   };
@@ -143,8 +142,7 @@ div.tb0 table tr,div.tb0 table tr th,div.tb0 table tr td{display:block;width:100
 ul.ul1{display:block;justify-content:normal;} \
 ul.ul1 li{margin-top:1em;width:100%;display:block;} \
 button#cb{margin-top:1em;} \
-} \
-.hljs{display:block;overflow-x:auto;padding:.5em;background:#282a36}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-section,.hljs-link{color:#8be9fd}.hljs-function .hljs-keyword{color:#ff79c6}.hljs,.hljs-subst{color:#f8f8f2}.hljs-string,.hljs-title,.hljs-name,.hljs-type,.hljs-attribute,.hljs-symbol,.hljs-bullet,.hljs-addition,.hljs-variable,.hljs-template-tag,.hljs-template-variable{color:#f1fa8c}.hljs-comment,.hljs-quote,.hljs-deletion,.hljs-meta{color:#6272a4}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-title,.hljs-section,.hljs-doctag,.hljs-type,.hljs-name,.hljs-strong{font-weight:bold}.hljs-emphasis{font-style:italic}'}
+}'}
     ];
 
     libsEls = [
@@ -332,18 +330,19 @@ button#cb{margin-top:1em;} \
 
       let src     = inArea.val();
       let result  = nw.Terser.minify(src, opts);
-      const cbBtn = $('<button type="button" id="cb" data-clipboard-target="code#minifyCode" data=clipboard-action="copy">Copy</button>');
+      const cbBtn = $('<button type="button" id="cb" data-clipboard-target="code#output" data=clipboard-action="copy">Copy</button>');
       outArea.append(cbBtn);
-      outArea.append('<pre><code id="minifyCode">(function(){'+result.code+'})();</code></pre>');
+      outArea.append('<pre><code id="output"></code></pre>');
+      $('div#result pre > code#output').text('(function(){'+result.code+'})();');
       cb(nw, cbBtn);
     });
   };
 
   const nw = init();
   nw.document.addEventListener(libEvtName, function(e){
-    setTimeout(function(){
-      run(nw, nw.document, nw.jQuery);
-    }, 500);
+    // setTimeout(function(){
+    run(nw, nw.document, nw.jQuery);
+    // }, 500);
   }, false);
 
 })(window, document);
