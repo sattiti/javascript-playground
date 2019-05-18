@@ -56,7 +56,14 @@
     let headEls = [
       {tag: 'meta', attrs:{charset: 'utf-8'}},
       {tag: 'meta', attrs:{name: 'viewport', content: 'width=device-width'}},
-      {tag: 'title', value: pageTitle}
+      {tag: 'title', value: pageTitle},
+      {tag: 'style', attrs:{type: 'text/css'}, value:'\
+body{margin:0;padding:0;background-color:#282A36;overflow-x:hidden;width:100%;height:100%;} \
+h1,h2,h3,h4,h5,h6,p,textarea,table,th,td,pre,code{margin:0;padding:0;line-height:1.5;color:#F8F8F2;font-size:1em;font-family:YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",Meiryo,sans-serif;font-weight:normal;} \
+th,td,code,pre{word-break:break-all;word-wrap:break-word;white-space:pre-wrap;} \
+div#wrapper{padding:1em;} \
+code,pre{overflow:auto;width:auto;display:block;white-space:pre-wrap;word-break:break-all;text-align:left;vertical-align:top;padding:.25em;margin:0;font-weight:normal;font-size:1em;} \
+code{background-color:#44475A;}'}
     ];
 
     libsEls = [
@@ -66,14 +73,7 @@
       {tag: 'script', attrs: {src: 'https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-html.min.js'}},
       {tag: 'script', attrs: {src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js'}},
       {tag: 'script', attrs: {src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js'}},
-      {tag: 'link', attrs: {href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css', type:'text/css', rel:'stylesheet'}},
-      {tag: 'style', attrs:{type: 'text/css'}, value:'\
-body{margin:0;padding:0;background-color:#282A36;overflow-x:hidden;width:100%;height:100%;} \
-h1,h2,h3,h4,h5,h6,p,textarea,table,th,td,pre,code{margin:0;padding:0;line-height:1.5;color:#F8F8F2;font-size:1em;font-family:YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",Meiryo,sans-serif;font-weight:normal;} \
-th,td,code,pre{word-break:break-all;word-wrap:break-word;white-space:pre-wrap;} \
-div#wrapper{padding:1em;} \
-code,pre{overflow:auto;width:auto;display:block;white-space:pre-wrap;word-break:break-all;text-align:left;vertical-align:top;padding:.25em;margin:0;font-weight:normal;font-size:1em;} \
-code{background-color:#44475A;}'}
+      {tag: 'link', attrs: {href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css', type:'text/css', rel:'stylesheet'}}
     ];
 
     contentEls = [{
@@ -84,7 +84,8 @@ code{background-color:#44475A;}'}
         children: [{
           tag: 'code',
           attrs: {
-            class: 'html xml js hljs'
+            class: 'html xml js hljs',
+            id: 'ppcode'
           },
         }]
       }]
@@ -156,7 +157,9 @@ code{background-color:#44475A;}'}
     });
 
     nw.hljs.initHighlightingOnLoad();
-    nw.hljs.initHighlighting();
+    // $('code#ppcode').each(function(i, block){
+    nw.hljs.highlightBlock(el);
+    // });
   };
 
   const nw = init();
