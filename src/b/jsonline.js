@@ -65,6 +65,7 @@
     el.style.left = ((a.innerWidth * .5) - el.offsetWidth *.5).toString() + 'px';
 
     setTimeout(function(){
+      el.remove();
       wrapper.remove();
     }, period);
   };
@@ -340,9 +341,9 @@ button#cb{margin-top:1em;} \
 
   const nw = init();
   nw.document.addEventListener(libEvtName, function(e){
-    //setTimeout(function(){
+    setTimeout(function(){
       run(nw, nw.document, nw.jQuery);
-    //}, 500);
+    }, 500);
   }, false);
 
 })(window, document);
