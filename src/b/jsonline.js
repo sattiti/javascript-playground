@@ -333,7 +333,8 @@ button#cb{margin-top:1em;} \
       const cbBtn = $('<button type="button" id="cb" data-clipboard-target="code#output" data=clipboard-action="copy">Copy</button>');
       outArea.append(cbBtn);
       outArea.append('<pre><code id="output"></code></pre>');
-      $('div#result pre > code#output').text('(function(){'+result.code+'})();');
+      // $('div#result pre > code#output').text('(function(){'+result.code+'})();');
+      $('div#result pre > code#output').text(result.code);
       cb(nw, cbBtn);
     });
   };
