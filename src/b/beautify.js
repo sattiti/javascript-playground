@@ -313,7 +313,7 @@ button#cb{margin-top:1em;} \
           result = nw.css_beautify(src, opts);
         }
 
-        const cbBtn = $('<button type="button" id="cb" data-clipboard-target="code#ppCode" data=clipboard-action="copy">Copy</button>');
+        const cbBtn = $('<button type="button" id="cb" data-clipboard-target="code#ppCode" data-clipboard-action="copy">Copy</button>');
         outArea.append(cbBtn);
         outArea.append('<pre><code id="ppCode"></code></pre>');
 
