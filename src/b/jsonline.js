@@ -220,7 +220,7 @@ button#cb{margin-top:1em;} \
         drop_debugger: true,
         ecma: 5,
         evaluate: true,
-        expression: false,
+        expression: true,
         global_defs: {},
         hoist_funs: false,
         hoist_props: true,
