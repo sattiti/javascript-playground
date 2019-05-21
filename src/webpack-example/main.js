@@ -1,8 +1,6 @@
-const MyUtils = require('./myutils.js');
+const Helper = require('./helper.js');
 
 (function(cw, cd){
-  console.log(MyUtils)
-
   function init(){
     const nw = cw.open('');
 
@@ -22,12 +20,12 @@ const MyUtils = require('./myutils.js');
     }];
 
     contentEls.forEach((el)=>{
-      nw.document.body.appendChild(MyUtils.attachElement(nw.document, el));
+      nw.document.body.appendChild(Helper.attachElement(nw.document, el));
     });
 
     return nw;
   };
 
   const w = init();
-  MyUtils.showMsg(w, "Hello world");
+  Helper.showMsg(w, "Hello world");
 })(window, document);
