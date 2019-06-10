@@ -4,22 +4,34 @@
   }
 
   function getDiffTime(r){
-    let rVal = '';
+    let rVal   = '';
+    const mark = 'F';
 
     if(r.length <= 0){
-      rVal = '0:0:0#' + getNow();
+      rVal = '00:00:00#' + getNow() + '#';
     }
     else{
-      const inputVal = r.split('#');
-      let oTime      = inputVal[0].split(':');
-      let uTime      = parseInt(inputVal[1], 10);
+      const v     = r.split('#');
+      const oTime = v[0].split(':').map(i => parseInt(i));
+      const uTime = parseInt(v[1], 10);
+      const isRun = v[2] === mark ? true : false;
 
-      let mTime = new Date(getNow() - uTime);
-      mTime.setHours(mTime.getHours() -9);
-      rVal = mTime.toTimeString().split(' ')[0] + '#' + getNow();
-    }
+      if(isRun){
+        rVal = v[0] + '#' + getNow() + '#';
+      }
+      else{
+        const mTime = new Date(getNow() - uTime);
+        mTime.setSeconds(mTime.getSeconds() + oTime[2]);
+        mTime.setMinutes(mTime.getMinutes() + oTime[1]);
+        mTime.setHours(mTime.getHours() -9);
+
+        const g = mTime.getHours() + oTime[0] + ':' + mTime.getMinutes() + ':' + mTime.getSeconds();
+        rVal    = g + '#' + getNow() + '#' + mark;
+      }
+    };
+
     return rVal;
-  }
+  };
 
   const editBtn   = d.querySelector('button#commentEditorTrigger');
   const submitBtn = d.querySelector('button#submitbtn');
