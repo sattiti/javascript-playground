@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device">
+<title></title>
 </head>
 <body>
 <div id="app" v-if="isApp">
-  <h1 v-bind:class="cls">
-    {{ message }}
-  </h1>
+  <h1 v-bind:class="cls">{{ message }}</h1>
   <ul>
     <li v-for="o in navs">
       <a v-bind:href="o.href">
@@ -18,7 +17,6 @@
   </ul>
   <input v-model="message">
   <button v-on:click="sayHello">Click Event</button>
-
   <ol>
     <todo-item
       v-for="item in items"
@@ -27,15 +25,14 @@
     />
   </ol>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
 Vue.component('todo-item', {
   props: ['todo'],
   template: '<li>{{ todo.text }}</li>'
-})
+});
 
-const app = new Vue({
+const vm = new Vue({
   el: '#app',
   data: ()=>{
     return {
@@ -61,7 +58,6 @@ const app = new Vue({
     }
   }
 });
-
 </script>
 </body>
 </html>
