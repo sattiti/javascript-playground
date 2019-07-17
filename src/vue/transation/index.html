@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title></title>
+<style type="text/css">
+.va-enter-active,
+.va-leave-active {
+  transition: opacity .5s;
+}
+.va-enter,
+.va-leave-to{
+  opacity: 0;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <button type="button" @click="show=!show">Click</button>
+<!--
+<transition 
+  enter-class="CLS1 CLS2 .."
+  enter-active-class="CLS1 CLS2 .."
+  enter-to-class="CLS1 CLS2 .."
+  leave-class="CLS1 CLS2 .."
+  leave-active-class="CLS1 CLS2 .."
+  leave-to-class="CLS1 CLS2 ..">
+</transition>
+-->
+  <transition name="va" v-if="show">
+    <p>{{ result }}</p>
+  </transition>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+// v-enter:
+// v-enter-active:
+// v-enter-to:
+// v-leave:
+// v-leave-active:
+// v-leave-to:
+const vm = new Vue({
+  el: '#app',
+  data: function(){
+    return {
+      result: 'default',
+      show: false
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title></title>
+</head>
+<body>
+<div id="app">
+<p>{{ result | escape | reverse | upper }}</p>
+<input type="text" v-model="result">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+const vm = new Vue({
+  el: '#app',
+  data: function(){
+    return {
+      result: 'default'
+    }
+  },
+  filters: {
+    upper: function(v){
+      return v.toUpperCase();
+    },
+    reverse: function(v){
+      return v.split('').reverse().join('');
+    }
+  }
+});
+
+Vue.filter('escape', function(v){
+  return v.replace(/</mg, '&lt;')
+    .replace(/>/mg, '&gt;')
+    .replace(/&/mg, '&amp;')
+    .replace(/`/mg, '&#60;')
+    .replace(/'/mg, '&#27;')
+    .replace(/"/mg, '&quot;');
+})
+</script>
+</body>
+</html>
