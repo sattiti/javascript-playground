@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<title></title>
-</head>
-<body>
-<div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
 Vue.component('my-h1', {
   props: ['h1text'],
   template: '<h1>{{ h1text }}</h1>',
@@ -53,10 +42,7 @@ const vm = new Vue({
       h1: 'hello'
     }
   },
-  created: ()=>{
-    document.title = 'hello';
+  mounted: function(){
+    document.title = 'Components';
   }
 });
-</script>
-</body>
-</html>

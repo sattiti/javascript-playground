@@ -78,6 +78,12 @@ const store = new Vuex.Store({
 const vm = new Vue({
   el: '#app',
   store,
+  
   //components: [Counter]
-  render:h => h(Counter)
+  render: function(createElement){
+    return createElement(Counter);
+  },
+  mounted: function(){
+    document.title = 'vuex Counter';
+  }
 });

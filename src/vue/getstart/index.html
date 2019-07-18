@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device">
+<meta name="viewport" content="width=device-width">
 <title></title>
 </head>
 <body>
@@ -26,38 +26,8 @@
   </ol>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-Vue.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-});
-
-const vm = new Vue({
-  el: '#app',
-  data: ()=>{
-    return {
-      message: 'hello world',
-      cls: 'hs0 hs1',
-      isApp: true,
-      navs: [
-        {text: 'Home', href: '/'},
-        {text: 'About', href: '/about/'},
-        {text: 'Contact', href: '/contact/'}
-      ],
-      items: [
-        {id: 0, text: 'John'},
-        {id: 1, text: 'Mary'},
-        {id: 2, text: 'Peter'},
-        {id: 3, text: 'Paul'}
-      ]
-    }
-  },
-  methods: {
-    sayHello: ()=>{
-      alert(app.message);
-    }
-  }
-});
-</script>
+<script src="https://cdn.jsdelivr.net/npm/vuex"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-router"></script>
+<script src="./main.js"></script>
 </body>
 </html>
