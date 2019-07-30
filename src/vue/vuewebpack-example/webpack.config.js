@@ -1,12 +1,16 @@
-const path              = require('path');
-const webpack           = require('webpack');
-const TerserPlugin      = require('terser-webpack-plugin');
+const path                = require('path');
+const webpack             = require('webpack');
+const TerserPlugin        = require('terser-webpack-plugin');
+const { VueLoaderPlugin } = require("vue-loader");
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  target: 'node',
-  entry: './src/main.js',
+  // target: 'node',
+  entry: [
+    'babel-polyfill',
+    path.resolve('src', 'main.js')
+  ],
 
   output: {
     filename: '[name].js',
@@ -14,18 +18,54 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.ProgressPlugin()
+    new webpack.ProgressPlugin(),
+    new VueLoaderPlugin()
     // new HtmlWebpackPlugin()]
   ],
 
   module: {
     rules: [
       {
-        loader: 'vue',
-        test: /\.vue$/
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          optimizeSSR: false
+        }
+      },
+      {
+        test: /\.pug$/,
+        oneOf:[
+          {
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader']
+          },
+          {
+            use: ['raw-loader', 'pug-plain-loader']
+          }
+        ]
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'compressed',
+              sourceMap: false,
+              indentedSyntax: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png|json|svg)$/,
+        loader: 'url-loader'
       },
       {
         test: /.(js|jsx)$/,
+        exclude: /node_modules/,
         include: [path.resolve(__dirname, './src')],
         loader: 'babel-loader',
 
@@ -45,6 +85,12 @@ module.exports = {
     ]
   },
 
+  resolve: {
+    extensions: ['.js', '.vue', '.json', 'jsx'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+    }
+  },
 
   optimization: {
     // Tell webpack to minimize the bundle using the TerserPlugin.
