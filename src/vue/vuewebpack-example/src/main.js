@@ -9,11 +9,18 @@ new Vue({
   store,
   router,
 
-  // render methods
-  // 1
+  // Render methods
+  // (createElement: () => VNode) => VNode
+  //
+  // method1
   // template: `<App/>`,
   // components: { App }
-
-  // 2
+  //
+  // method2
   render: h=>h(App)
+
+  // renderError
+  // (createElement: () => VNode, error: Error) => VNode
+  // development モードでのみ動作する。
+  // デフォルトの render 関数でエラーが発生した際に、代替となる描画結果を提供する。
 })

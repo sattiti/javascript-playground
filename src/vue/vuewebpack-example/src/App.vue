@@ -1,11 +1,12 @@
 <template lang="pug">
   #app
     gnav
-    h1 world
+    h1 {{ h1text }}
     router-view
     counter
-    p {{ message }}
-    input(type="text", v-myfocus, v-model="message")
+    p(v-mymouseevent) {{ message }}
+    label
+      input(type="text", v-model="message")
 </template>
 
 
@@ -15,18 +16,76 @@ import Counter from './components/Counter.vue'
 
 export default {
   name: 'app',
-  data: function(){
-    return{
-      message: ''
-    }
-  },
+
   components: {
     Gnav,
     Counter
   },
 
+  // computed properties は cache され、reactive 依存が変更されたときにだけ再算出する。
+  computed: {
+    a: vm =>{
+      vm.a = 2
+    },
+    b: {
+      get: function(){
+        return this.b + 1
+      },
+      set: function(x){
+        this.b = this.b + x
+      }
+    }
+
+  },
+
+  data: function(){
+    return{
+      message: 'your name',
+      h1text: 'world'
+    }
+  },
+
+  // props
+  // props: {
+  //   propName: {
+  //     type: String | Number, Boolean, Array, Object, Date, Function, Symbol,
+  //     default: Any,
+  //     required: true | false,
+  //     validator: (value)=>{
+  //
+  //     }
+  //   }
+  // },
+
+  // Vue インスタンスに組み込まれるメソッド。
+  // これらのメソッドに直接アクセスでき、ディレクティブの式で使用することもできる。
+  // methods: {},
+
+  // instance 化の際に各 object のエントリーに対して監視する。
+  watch: {
+    '$store.state.count': {
+      handler: function(val, oldVal){
+        this.h1text = val
+      },
+
+      // オブジェクトの中のネストされた値の変更を検出か否か。
+      deep: true,
+
+      // コールバックは監視の開始後、直ちに呼ばれる。
+      immediate: true
+    }
+  },
+
+  // propsData
+  // new 軽で instance 作成時のみ使用可。
+  // instance 作成中にプロパティに値を渡す。
+  // 主に unit test 時に使われる。
+  // propsData: {},
+
+  // Custom directives.
+  // v-bind, v-model のようなカスタムディレクティブを登録することができる。
   directives: {
-    myfocus: {
+    mymouseevent: {
       // 初回のひも付いた時に 1 度だけ実行される。
       // binding
       //   .name: v-
@@ -36,16 +95,24 @@ export default {
       //   .arg
       //   .modifiers
       bind: (el, binding, vnode, oldVnode)=>{
-        el.style.color = 'red'
+        el.style.color = 'pink'
+        el.addEventListener('mouseover', function(e){
+          e.preventDefault()
+          const c = e.currentTarget
+          c.style.color = 'lime'
+        })
+        el.addEventListener('mouseout', function(e){
+          e.preventDefault()
+          const c = e.currentTarget
+          c.style.color = 'black'
+        })
       },
 
       // ひも付いている要素が親に挿入された時に呼び出される。
       inserted: (el, binding, vnode, oldVnode)=>{},
 
       // VNode が更新される度に呼び出される。
-      update: (el, binding, vnode, oldVnode)=>{
-        console.log(el)
-      },
+      update: (el, binding, vnode, oldVnode)=>{},
 
       // VNode と子コンポーネントの VNode が更新された後に呼び出される。
       componentUpdated: (el, binding, vnode, oldVnode)=>{},
