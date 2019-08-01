@@ -7,9 +7,9 @@ clean:
 	-@rm $(OUTPUT)/js/*
 
 .PHONY: build
-build:
+build: clean
 	@$(WEBPACK)
 
 .PHONY: dev
-dev:
+dev: clean build
 	@$(WEBPACK_SERVER)

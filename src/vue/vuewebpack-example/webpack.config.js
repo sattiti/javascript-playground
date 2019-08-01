@@ -14,6 +14,7 @@ module.exports = {
 
   output: {
     filename: '[name].js',
+    publicPath: '/js/',
     path: path.resolve(__dirname, './output/js')
   },
 
@@ -248,6 +249,24 @@ module.exports = {
   },
 
   devServer: {
-    open: true
+    // after: function(app, server){},
+    // before: function(app, server){},
+    bonjour: true,
+    compress: true,
+    contentBase: path.join(__dirname, '/output'),
+    // headers: {},
+    hot: true,
+    inline: true,
+    // lazy: true,
+    // host: '',
+    liveReload: true,
+    open: true,
+    port: 4000,
+    watchContentBase: true
+    // watchOptions: {
+    //   aggregateTimeout: 300,
+    //   ignored: [/node_modules/],
+    //   poll: true
+    // }
   }
 };
