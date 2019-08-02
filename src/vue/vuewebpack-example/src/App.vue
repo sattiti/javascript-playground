@@ -35,7 +35,6 @@ export default {
         this.b = this.b + x
       }
     }
-
   },
 
   data: function(){
@@ -44,6 +43,13 @@ export default {
       h1text: 'world'
     }
   },
+
+  // v-model が指定されたとき、property と event を変更することができる。
+  // default では v-model は、value を property とし、input を event して用いている。
+  // model: {
+  //   prop: 'class',
+  //   event: 'change'
+  // },
 
   // props
   // props: {
