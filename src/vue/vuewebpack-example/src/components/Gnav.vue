@@ -2,7 +2,8 @@
 - const navs = [
 -   {href: 'home', text: 'Home'},
 -   {href: 'about', text: 'About'},
--   {href: 'contact', text: 'Contact'}
+-   {href: 'contact', text: 'Contact'},
+-   {href: 'question', text: 'Question'}
 - ]
 nav
   ul

@@ -4,5 +4,13 @@ export default{
   },
   decrement: (store, e)=>{
     store.commit('decrement')
+  },
+
+  radioSelected: (store, e)=>{
+    store.commit('radioSelected', e)
+  },
+
+  nextButtonAction: (store, e)=>{
+    store.commit('nextButtonAction', e)
   }
 }

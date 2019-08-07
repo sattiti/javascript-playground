@@ -15,5 +15,13 @@ export default{
 
   cyohan: (state, getters)=>{
     return state.count % 2 === 0 ? '半' : '丁'
+  },
+
+  qs: (state, getters, i)=>{
+    return state.questions
+  },
+
+  buttonValue: (state, getters)=>{
+    return state.buttonValue
   }
 }

@@ -9,9 +9,18 @@ Vue.use(Vuex)
 const state = {
   pageTitle: {
     about: 'About',
-    contact: 'Contact'
+    contact: 'Contact',
+    question: 'question'
   },
-  count: 0
+  count: 0,
+  questions: [
+    {
+      title: '1',
+      values: ['apple', 'orange'],
+      show: false
+    }
+  ],
+  buttonValue: 'next'
 }
 
 export default new Vuex.Store({
