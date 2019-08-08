@@ -9,6 +9,7 @@
       li(v-for="v in q.answers")
         label
           input(type="radio" :name="q.name" :value="v" @click="radioSelected({event: $event, qNum: i})")/ {{ v }}
+    p.ans
     button(type="button" v-show="q.isCompleted" @click="nextButtonAction") {{ buttons.next.label }}
 
   .abk(:v-show="hasAnswer")
@@ -62,7 +63,15 @@ button
   margin-top: 1em
   box-sizing: border-box
   background-color: #fffff9
+  ul
+    margin-left: 0
+    li
+      list-style: none
+      margin-left: 0
 
 .abk
   background-color: #fffff0
+
+.ans
+  display: none
 </style>
