@@ -12,15 +12,44 @@ const state = {
     contact: 'Contact',
     question: 'question'
   },
+
   count: 0,
+
+  buttons: {
+    next: { label: 'next' },
+    edit: { label: 'edit' }
+  },
+
+  currentQnum: 0,
+
   questions: [
     {
-      title: '1',
-      values: ['apple', 'orange'],
-      show: false
-    }
+      title: 'Which one is your favious fruits.',
+      name: 'fruit',
+      answers: ['apple', 'orange', 'banana', 'melon', 'water melon'],
+      isCompleted: false
+    },
+    {
+      title: 'What color do you like.',
+      name: 'color',
+      answers: ['purple', 'red', 'skyblue', 'green', 'yellow'],
+      isCompleted: false
+    },
+    {
+      title: 'What did you do this summer.',
+      name: 'summer',
+      answers: ['swimming', 'traveling', 'singing', 'climbing', 'hiking'],
+      isCompleted: false
+    },
+    {
+      title: 'Which os do you use.',
+      name: 'os',
+      answers: ['iOS', 'Andirod', 'macOS', 'Linux', 'UNIX'],
+      isCompleted: false
+    },
   ],
-  buttonValue: 'next'
+
+  finalAnswers: [],
 }
 
 export default new Vuex.Store({

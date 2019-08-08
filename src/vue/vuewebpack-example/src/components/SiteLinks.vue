@@ -8,13 +8,13 @@
 ul
   -for(let o of links)
     li
-      a(href="`${o.href}`", target="_blank")=o.text
+      a(href=o.href, target="_blank")=o.text
 </template>
 
 
 <script>
 export default {
-  name: 'site-links'
+  name: 'site-links',
 }
 </script>
 

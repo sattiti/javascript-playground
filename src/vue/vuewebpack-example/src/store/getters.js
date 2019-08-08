@@ -17,11 +17,19 @@ export default{
     return state.count % 2 === 0 ? '半' : '丁'
   },
 
-  qs: (state, getters, i)=>{
+  questions: (state, getters)=>{
     return state.questions
   },
 
-  buttonValue: (state, getters)=>{
-    return state.buttonValue
+  answers: (state, getters)=>{
+    return state.finalAnswers
+  },
+
+  buttons: (state, getters)=>{
+    return state.buttons
+  },
+
+  hasAnswer: (state, getters)=>{
+    return state.finalAnswers.length ? true : false
   }
 }
