@@ -16,7 +16,8 @@ export default{
   },
 
   nextButtonAction: (state, e)=>{
-    e.target.disabled = true
+    // e.target.disabled = true
+    e.target.style.display = 'none'
 
     // answer element
     const ansEl = e.target.parentNode.querySelector('p.ans')
@@ -25,9 +26,10 @@ export default{
     const ul = e.target.parentNode.querySelector('ul')
     ul.style.display = 'none'
 
-    state.questions[state.currentQNum].isCompleted = true
-    state.finalAnswers[state.currentQNum] = ''
-    state.finalAnswers[state.currentQNum] = e.target.getAttribute('value')
+    const q = state.questions[state.currentQNum]
+    q.isCompleted = true
+    state.finalAnswers[q.name] = ''
+    state.finalAnswers[q.name] = e.target.getAttribute('value')
 
     let els = e.target.parentNode.querySelectorAll('input[type="radio"]')
     els.forEach(a=>{

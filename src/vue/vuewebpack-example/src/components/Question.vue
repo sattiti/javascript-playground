@@ -12,9 +12,9 @@
     p.ans
     button(type="button" v-show="q.isCompleted" @click="nextButtonAction") {{ buttons.next.label }}
 
-  .abk(:v-show="hasAnswer")
-    ol
-      li(v-for="(ans, index) in answers") {{ ans }}
+  //- .abk(:v-show="hasAnswer")
+  //-   ol
+  //-     li(v-for="(v, k) in answers") {{ v }}
 </template>
 
 

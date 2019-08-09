@@ -49,7 +49,7 @@ const state = {
     },
   ],
 
-  finalAnswers: [],
+  finalAnswers: {}
 }
 
 export default new Vuex.Store({

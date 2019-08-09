@@ -30,6 +30,6 @@ export default{
   },
 
   hasAnswer: (state, getters)=>{
-    return state.finalAnswers.length ? true : false
+    // return state.currentQnum === 3 ? true : false
   }
 }
