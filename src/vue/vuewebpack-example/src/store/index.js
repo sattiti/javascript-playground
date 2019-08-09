@@ -49,7 +49,8 @@ const state = {
     },
   ],
 
-  finalAnswers: {}
+  finalAnswers: {},
+  answerCompleted: false
 }
 
 export default new Vuex.Store({

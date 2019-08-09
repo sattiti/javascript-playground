@@ -12,6 +12,6 @@ export default{
   },
 
   nextButtonAction: (store, e)=>{
-    store.commit('nextButtonAction', e)
+    store.commit('nextButtonAction', {event: e, store: store})
   }
 }

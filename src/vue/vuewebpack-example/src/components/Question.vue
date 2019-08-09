@@ -12,14 +12,14 @@
     p.ans
     button(type="button" v-show="q.isCompleted" @click="nextButtonAction") {{ buttons.next.label }}
 
-  //- .abk(:v-show="hasAnswer")
-  //-   ol
-  //-     li(v-for="(v, k) in answers") {{ v }}
+  .abk(:v-show="answerCompleted")
+    ol
+      li(v-for="(v, k) in answers") {{ v }} 
 </template>
 
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
 import SiteLinks from './SiteLinks.vue'
 
 export default {
@@ -33,9 +33,9 @@ export default {
     ...mapGetters([
       'pageTitle',
       'questions',
-      'answers',
       'buttons',
-      'hasAnswer'
+      'answerCompleted',
+      'answers',
     ])
   },
 

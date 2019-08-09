@@ -29,7 +29,7 @@ export default{
     return state.buttons
   },
 
-  hasAnswer: (state, getters)=>{
-    // return state.currentQnum === 3 ? true : false
+  answerCompleted: (state, getters)=>{
+    return state.answerCompleted
   }
 }
