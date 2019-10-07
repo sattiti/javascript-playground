@@ -27,30 +27,35 @@ const state = {
       title: 'Which one is your favious fruits.',
       name: 'fruit',
       answers: ['apple', 'orange', 'banana', 'melon', 'water melon'],
-      isCompleted: false
+      isCompleted: false,
+      active: true,
+      ans: ''
     },
     {
       title: 'What color do you like.',
       name: 'color',
       answers: ['purple', 'red', 'skyblue', 'green', 'yellow'],
-      isCompleted: false
+      isCompleted: false,
+      active: false,
+      ans: ''
     },
     {
       title: 'What did you do this summer.',
       name: 'summer',
       answers: ['swimming', 'traveling', 'singing', 'climbing', 'hiking'],
-      isCompleted: false
+      isCompleted: false,
+      active: false,
+      ans: ''
     },
     {
       title: 'Which os do you use.',
       name: 'os',
       answers: ['iOS', 'Andirod', 'macOS', 'Linux', 'UNIX'],
-      isCompleted: false
+      isCompleted: false,
+      active: false,
+      ans: ''
     },
-  ],
-
-  finalAnswers: {},
-  answerCompleted: false
+  ]
 }
 
 export default new Vuex.Store({

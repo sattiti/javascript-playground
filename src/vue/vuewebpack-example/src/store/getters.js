@@ -29,7 +29,16 @@ export default{
     return state.buttons
   },
 
-  answerCompleted: (state, getters)=>{
-    return state.answerCompleted
+  showAnswer: (state, getters)=>{
+    let flag = false
+    state.questions.forEach(o => {
+      if(o.ans.length <= 0) return
+      flag = true
+    })
+
+    if(state.currentQNum !== state.questions.length -1){
+      flag = false
+    }
+    return flag
   }
 }
