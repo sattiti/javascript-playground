@@ -3,24 +3,25 @@
   h2 {{ pageTitle('question') }}
   site-links
 
-  .qbk(v-for="(q, i) in questions")
+  p {{ showAnswer }}
+  .qbk(v-for="(q, i) in questions" v-show="q.active")
     h3 {{ q.title }}
     ul
       li(v-for="v in q.answers")
         label
           input(type="radio" :name="q.name" :value="v" @click="radioSelected({event: $event, qNum: i})")/ {{ v }}
-    p.ans
     button(type="button" v-show="q.isCompleted" @click="nextButtonAction") {{ buttons.next.label }}
 
-  .abk(:v-show="answerCompleted")
+  .abk(v-show="showAnswer")
     ol
-      li(v-for="(v, k) in answers") {{ v }} 
+      li(v-for="(q, index) in questions") {{ q.ans }}
 </template>
 
 
 <script>
-import { mapGetters, mapActions, mapState } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import SiteLinks from './SiteLinks.vue'
+import $ from 'jquery'
 
 export default {
   name: 'question',
@@ -33,9 +34,9 @@ export default {
     ...mapGetters([
       'pageTitle',
       'questions',
-      'buttons',
-      'answerCompleted',
       'answers',
+      'buttons',
+      'showAnswer'
     ])
   },
 
@@ -45,6 +46,10 @@ export default {
       'nextButtonAction',
     ])
   },
+  mounted: function(){
+    let qbk = $('#question').find('.qbk')
+    qbk.not(':eq(0)').hide()
+  }
 }
 </script>
 
@@ -63,15 +68,7 @@ button
   margin-top: 1em
   box-sizing: border-box
   background-color: #fffff9
-  ul
-    margin-left: 0
-    li
-      list-style: none
-      margin-left: 0
 
 .abk
   background-color: #fffff0
-
-.ans
-  display: none
 </style>
