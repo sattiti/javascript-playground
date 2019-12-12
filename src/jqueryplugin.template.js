@@ -1,11 +1,12 @@
 ;(function($){
   $.fn.PLUGIN_NAME = function(options){
-    var opts = $.extend({
+    var opts = $.extend({}, options);
     
-    }, options);
+    this.func1 = function(){};
     
-    return this.each(function(){
-      
+    $.fn.PLUGIN_NAME.func2 = function(){};
+    
+    return this.each(function(i, o){
     });
   }
 })(jQuery);
