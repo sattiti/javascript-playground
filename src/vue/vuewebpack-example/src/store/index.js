@@ -7,6 +7,8 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
+  agree: false,
+
   pageTitle: {
     about: 'About',
     contact: 'Contact',

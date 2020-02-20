@@ -13,5 +13,9 @@ export default{
 
   nextButtonAction: (store, e)=>{
     store.commit('nextButtonAction', {event: e, store: store})
+  },
+
+  updateAgree: (store, e)=>{
+    store.commit('updateAgree', e)
   }
 }

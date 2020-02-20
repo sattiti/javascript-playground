@@ -53,9 +53,11 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              outputStyle: 'compressed',
-              sourceMap: false,
-              indentedSyntax: true
+              sassOptions:{
+                outputStyle: 'compressed',
+                sourceMap: false,
+                indentedSyntax: true
+              }
             }
           }
         ]
@@ -76,9 +78,9 @@ module.exports = {
           presets: [
             [
               '@babel/preset-env',
-              {
-                modules: false
-              }
+              // {
+              //   modules: false
+              // }
             ]
           ]
         }

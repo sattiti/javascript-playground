@@ -26,5 +26,9 @@ export default{
     if(state.currentQNum +1 >= state.questions.length) return;
     let q    = state.questions[state.currentQNum + 1];
     q.active = true;
-  }
+  },
+
+  updateAgree: (state, e)=>{
+    state.agree = e.target.checked
+  },
 }

@@ -40,5 +40,9 @@ export default{
       flag = false
     }
     return flag
+  },
+
+  agree: (state, getter)=>{
+    return state.agree
   }
 }

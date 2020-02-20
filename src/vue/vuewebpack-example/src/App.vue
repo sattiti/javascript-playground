@@ -4,6 +4,7 @@
     h1 {{ h1text }}
     router-view
     counter
+    checkbox
     p(v-mymouseevent) {{ message }}
     label
       input(type="text", v-model="message")
@@ -11,15 +12,17 @@
 
 
 <script>
-import Gnav from './components/Gnav.vue'
-import Counter from './components/Counter.vue'
+import Gnav from './components/Gnav'
+import Counter from './components/Counter'
+import Checkbox from './components/Checkbox'
 
 export default {
   name: 'app',
 
   components: {
     Gnav,
-    Counter
+    Counter,
+    Checkbox,
   },
 
   // computed properties は cache され、reactive 依存が変更されたときにだけ再算出する。
