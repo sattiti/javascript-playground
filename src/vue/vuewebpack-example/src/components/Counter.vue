@@ -1,5 +1,10 @@
 <template lang="pug">
 .counter
+  h2 static props
+  p {{ staticString }}
+  h2 dynamic props
+  p {{ dynamicString }}
+  hr
   p {{ count }} ({{ cyohan }})
   button(type="button" @click="increment") +
   button(type="button" @click="decrement") -
@@ -10,6 +15,17 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'counter',
+  // receive from parent componment.
+  props: {
+    staticString: {
+      type: String,
+      default: 'static'
+    },
+    dynamicString: {
+      type: String,
+      default: 'dynamic'
+    }
+  },
   computed: {
     ...mapGetters([
       'cyohan',

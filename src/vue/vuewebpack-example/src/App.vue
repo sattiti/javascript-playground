@@ -3,7 +3,7 @@
     gnav
     h1 {{ h1text }}
     router-view
-    counter
+    <counter staticString="static hello" :dynamicString="message" />
     checkbox
     p(v-mymouseevent) {{ message }}
     label
