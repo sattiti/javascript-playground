@@ -3,7 +3,8 @@
 -   {href: 'home', text: 'Home'},
 -   {href: 'about', text: 'About'},
 -   {href: 'contact', text: 'Contact'},
--   {href: 'question', text: 'Question'}
+-   {href: 'question', text: 'Question'},
+-   {href: 'dataloader', text: 'DataLoader'},
 - ]
 nav
   ul

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import About from '../components/About.vue'
-import Contact from '../components/Contact.vue'
-import Question from '../components/Question.vue'
+import About from '../components/About'
+import Contact from '../components/Contact'
+import Question from '../components/Question'
+import DataLoader from '../components/DataLoader'
 
 Vue.use(Router)
 
@@ -25,6 +26,7 @@ export default new Router({
     { path: '/about', name: 'about', component: About },
     { path: '/contact', name: 'contact', component: Contact },
     { path: '/question', name: 'question', component: Question },
+    { path: '/dataloader', name: 'dataLoader', component: DataLoader }
   ]
 })
 
