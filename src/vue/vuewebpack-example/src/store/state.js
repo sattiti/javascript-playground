@@ -1,4 +1,7 @@
 export default{
+  // ajax data
+  data: null,
+
   agree: false,
 
   pageTitle: {

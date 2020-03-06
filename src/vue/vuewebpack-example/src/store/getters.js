@@ -44,5 +44,9 @@ export default{
 
   agree: (state, getter)=>{
     return state.agree
+  },
+
+  getData: (state, getter)=>{
+    return state.data
   }
 }

@@ -3,14 +3,15 @@
   h2 {{ pageTitle('dataLoader') }}
   site-links
   hr
+  ul(v-for="(k, v) in getData")
+    li {{ k.textContent }}
   hr
 </template>
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import SiteLinks from './SiteLinks'
-// import axios from 'axios'
 
 export default {
   name: 'dataLoader',
@@ -19,16 +20,27 @@ export default {
     SiteLinks,
   },
 
+  actions: {
+    ...mapActions([
+      'getXML'
+    ])
+  },
+
+  mounted: function(){
+    this.$store.dispatch('getXML');
+  },
+
   computed: {
     ...mapGetters([
-      'pageTitle'
+      'pageTitle',
+      'getData',
     ])
   },
 }
 </script>
 
 
-<style scoped lang="sass">
+<style lang="sass">
 body
   background-color: cyan
 </style>

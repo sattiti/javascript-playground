@@ -31,4 +31,11 @@ export default{
   updateAgree: (state, e)=>{
     state.agree = e.target.checked
   },
+
+  getData: function(state, o){
+    const e         = o.event;
+    const xmlparser = new DOMParser()
+    const data      = xmlparser.parseFromString(o.data, 'text/xml').querySelector('items');
+    state.data      = data.querySelectorAll('item');
+  }
 }

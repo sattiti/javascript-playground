@@ -42,7 +42,7 @@ export default {
 </script>
 
 
-<style lang="sass" scoped>
+<style lang="sass">
 button
   width: 10%
   height: auto

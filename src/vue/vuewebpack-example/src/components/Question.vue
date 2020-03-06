@@ -54,7 +54,7 @@ export default {
 </script>
 
 
-<style scoped lang="sass">
+<style lang="sass">
 body
   background-color: lime
 
