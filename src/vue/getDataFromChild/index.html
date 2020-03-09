@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<div id="app">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+// child
+const App = Vue.component('child', {
+  template: `
+    <div>
+      <input v-model="inputText">
+    </div>
+  `,
+
+  data: function(){
+    return {
+      inputText: ''
+    }
+  },
+
+  methods: {
+    sendDataToParent: function(){
+      // @EVENT_NAME="PARENT_METHOD_NAME"
+      this.$emit('sendDataToParent', {event: event, msg: this.inputText})
+    }
+  },
+
+  updated: function(){
+    this.sendDataToParent()
+  },
+});
+
+
+// Parent
+const vm = new Vue({
+  el: '#app',
+
+  components: {
+    App
+  },
+
+  template: `
+    <div>
+      <h1>Data from Child:</h1>
+      <p> {{ msgFromChild }} </p>
+      <App ref="child1" @sendDataToParent="reciveDataFromChild" />
+    </div>
+  `,
+
+  data: function(){
+    return {
+      msgFromChild: 'default parent',
+    }
+  },
+
+  methods: {
+    reciveDataFromChild: function(o){
+      const e           = o.event;
+      this.msgFromChild = o.msg;
+    }
+  },
+})
+</script>
+</body>
+</html>

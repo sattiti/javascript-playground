@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<div id="app">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+// child
+const App = Vue.component('child', {
+  template: `
+    <div>
+      <h2>{{ msgFromParent }}</h2>
+    </div>
+  `,
+
+  data: function(){
+    return {
+      msgFromParent: ''
+    }
+  },
+
+  props: {
+    msgFromParent: {
+      type: String,
+      default: 'child',
+    }
+  },
+});
+
+
+// Parent
+const vm = new Vue({
+  el: '#app',
+
+  components: {
+    App
+  },
+
+  // ref を使い、子を認識する。
+  template: `
+    <App ref="child1" />
+  `,
+
+  methods: {
+    passMsgToChild: function(){
+      this.$refs.child1.msgFromParent = 'hello world'
+    },
+  },
+
+  mounted: function(){
+    this.passMsgToChild()
+  },
+})
+</script>
+</body>
+</html>
