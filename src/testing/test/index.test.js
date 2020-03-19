@@ -20,7 +20,6 @@ const chai   = require('chai')
 const expect = chai.expect
 const assert = chai.assert
 
-
 describe('Array', function(){
   before(function(){
     console.log('[BEFORE]')
@@ -34,6 +33,14 @@ describe('Array', function(){
   })
 
   beforeEach(function(){
+    // retry 2 times
+    this.retries(2)
+
+    if(Math.round(Math.random()*2) === 1){
+      // skip
+      console.log('[SKIP]')
+      this.skip()
+    }
     console.log('  [BEFORE_EACH]')
     console.log('  runs before each test in this block.')
   })
@@ -50,7 +57,8 @@ describe('Array', function(){
     })
   })
 
-  describe('#length', function(){
+  // skip
+  describe.skip('#length', function(){
     it('should return the lenght', function(){
       const ary = [1, 2, 4]
       assert.equal(ary.length, ary.length)
@@ -60,6 +68,12 @@ describe('Array', function(){
   // exclusive test
   // only をつけたテストだけ実行される。
   describe.only('#concat', function(){
+    // timeout
+    this.timeout(1000)
+
+    // slow
+    this.slow(10000000)
+
     it('should ary.length + ary2.length be same size', function(){
       const ary = [1, 3, 5]
       const ary2 = [2, 4, 6]
