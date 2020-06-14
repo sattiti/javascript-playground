@@ -1,3 +1,23 @@
+// async
+// async 非同期処理を実行する関数定義。
+// async 関数は自動的に Promise を返す。
+
+// await
+// await は Promise 処理の結果が返ってくるまで一時停止してくれる演算子。
+// await は async で定義された関数の中だけでしか使えない。
+(async function(){
+  return await (async (()=>{
+    return 2
+  })())
+})()
+.then((v)=>{
+})
+.catch((v)=>{
+})
+
+
+
+
 function myPromise(){
   return new Promise(function(resolve, reject){
     console.log(1)
