@@ -1,0 +1,17 @@
+{
+  "name": "jest-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test.watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "jest-extended": "^0.11.5"
+  }
+}
