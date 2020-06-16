@@ -6,7 +6,7 @@
   "scripts": {
     "webpack.init": "npx webpack init",
     "webpack.build": "webpack",
-    "webpack.start": "webpack-dev-server"
+    "webpack.serve": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
