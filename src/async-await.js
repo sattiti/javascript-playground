@@ -5,7 +5,8 @@
 // await
 // await は Promise 処理の結果が返ってくるまで一時停止してくれる演算子。
 // await は async で定義された関数の中だけでしか使えない。
-// .then(v) を使わずに代入することができる。
+// Promise.then(v=>{}) を簡略した書き方。
+// Promise.then(v=>{}) を使わずに戻り値を取得することができる。
 (async function(){
   return await (async (()=>{
     return 2
