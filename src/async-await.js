@@ -16,9 +16,6 @@
 .catch((v)=>{
 })
 
-
-
-
 function myPromise(){
   return new Promise(function(resolve, reject){
     console.log(1)
@@ -29,7 +26,6 @@ function myPromise(){
     }, 2000);
   })
 }
-
 
 // async function は非同期処理関数
 (async function(){
@@ -48,3 +44,23 @@ function myPromise(){
     console.log(4);
     return v
 });
+
+
+
+async function fn1(){
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      console.log(1)
+      resolve(2)
+    }, 2000)
+  })
+}
+
+async function main(){
+  // f1 is 2
+  let f1 = await fn1()
+  console.log(f1)
+  console.log(3)
+}
+
+main()
