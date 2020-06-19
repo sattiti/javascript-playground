@@ -9,7 +9,7 @@ module.exports = {
   // target: 'node',
   entry: [
     'babel-polyfill',
-    path.resolve('src', 'main.js')
+    path.resolve('src/js', 'main.js')
   ],
 
   output: {
@@ -64,7 +64,8 @@ module.exports = {
                 outputStyle: 'compressed',
                 sourceMap: false,
                 indentedSyntax: true
-              }
+              },
+              prependData: "@import './src/sass/variables.sass'"
             }
           }
         ]
@@ -85,9 +86,6 @@ module.exports = {
           presets: [
             [
               '@babel/preset-env'
-              // {
-              //   modules: false
-              // }
             ]
           ]
         }
