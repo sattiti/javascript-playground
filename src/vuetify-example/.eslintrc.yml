@@ -1,0 +1,38 @@
+env:
+  browser: true
+  commonjs: true
+  es2020: true
+  node: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:vue/essential'
+  - 'plugin:eslint-comments/recommended'
+  # - 'plugin:prettier/recommended'
+parserOptions:
+  ecmaVersion: 11
+plugins:
+  - vue
+  - eslint-comments
+  # - prettier
+rules:
+  # 'prettier/prettier': 
+  #   - error
+  #   - singleQuote: true
+  #     trailingComma: 'es5'
+  #     semi: false
+  #     useTabs: false
+  #     tabWidth: 2
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - never
+  no-unused-vars: off
+

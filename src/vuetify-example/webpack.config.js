@@ -2,11 +2,15 @@ const path                = require('path');
 const webpack             = require('webpack');
 const TerserPlugin        = require('terser-webpack-plugin');
 const { VueLoaderPlugin } = require("vue-loader");
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  // production, development, none
   mode: 'development',
+
   // target: 'node',
+
   entry: [
     'babel-polyfill',
     path.resolve('src/js', 'main.js')
@@ -20,8 +24,9 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
-    new VueLoaderPlugin()
-    // new HtmlWebpackPlugin()]
+    new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin()
+    // new HtmlWebpackPlugin()
   ],
 
   module: {
@@ -60,12 +65,14 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
+              implementation: require('sass'),
+              prependData: "@import './src/sass/variables.sass'",
               sassOptions: {
+                fiber: require('fibers'),
+                indentedSyntax: true,
                 outputStyle: 'compressed',
-                sourceMap: false,
-                indentedSyntax: true
-              },
-              prependData: "@import './src/sass/variables.sass'"
+                sourceMap: false
+              }
             }
           }
         ]
@@ -73,6 +80,16 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|gif|png|json|svg)$/,
         loader: 'url-loader'
+      },
+      {
+        test: /.(js|jsx)$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: {
+          cache: false,
+          fix: false
+        }
       },
       {
         test: /.(js|jsx)$/,
