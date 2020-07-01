@@ -6,16 +6,14 @@ import { storiesOf } from '@storybook/html'
 
 
 export default {
-  title: 'Button With Pug',
-  component: {
-  },
-  decorators: [],
-  parameters: {},
+  title: 'Button With Pug'
 }
+
 
 const components = { h1, button }
 
-const s = storiesOf('Pug Modules', module)
+// | でカテゴリ名を生成する。
+const s = storiesOf('Pug Modules | UI', module)
 
 for(let k in components){
   s.add(k, ()=>{
