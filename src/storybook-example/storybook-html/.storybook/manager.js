@@ -17,7 +17,6 @@ const options = {
   selectedPanel: undefined,
 }
 
-
 addons.setConfig({
   ...options,
 
