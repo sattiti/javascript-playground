@@ -26,13 +26,8 @@ export const Button = ()=>{
   const b = document.createElement('button');
   b.type = 'button';
   b.innerText = 'Hello Button';
-  b.addEventListener('click', (e)=>{
-    console.log(e)
-    action({
-      onClick: e,
-      onMouseOver: 'mouse'
-    })
-  });
+  b.addEventListener('click', action('click')
+  );
   return b
 }
 
