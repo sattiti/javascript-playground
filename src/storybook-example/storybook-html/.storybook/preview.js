@@ -34,11 +34,11 @@ addDecorator(
 addDecorator(withA11y)
 
 // Story Wrapper
-addDecorator(
-  (storyFn)=>{
-    return `<div style="background-color: yellow;">${storyFn()}</div>`
-  }
-)
+// addDecorator(
+//   (storyFn)=>{
+//     return `<div style="background-color: yellow;">${storyFn()}</div>`
+//   }
+// )
 // }}}
 // Parameters {{{
 // Parameters are custom metadata for a story. 

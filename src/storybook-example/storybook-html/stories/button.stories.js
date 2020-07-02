@@ -33,7 +33,7 @@ export const Button = ()=>{
       onMouseOver: 'mouse'
     })
   });
-  return b.outerHTML
+  return b
 }
 
 // 表示名を変更することができる。
