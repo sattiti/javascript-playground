@@ -91,7 +91,7 @@ module.exports = {
         loader: 'url-loader'
       },
       {
-        test: /.(js|jsx)$/,
+        test: /\.m?(js|jsx)$/,
         exclude: /node_modules/,
         enforce: 'pre',
         loader: 'eslint-loader',
@@ -101,12 +101,15 @@ module.exports = {
         }
       },
       {
-        test: /.(js|jsx)$/,
+        test: /\.m?(js|jsx)$/,
         exclude: /node_modules/,
         include: [path.resolve(__dirname, './src')],
         loader: 'babel-loader',
         options: {
-          plugins: ['@babel/plugin-syntax-dynamic-import'],
+          plugins: [
+          '@babel/plugin-syntax-dynamic-import',
+          '@babel/plugin-transform-runtime',
+          ],
           presets: [
             [
               '@babel/preset-env',
