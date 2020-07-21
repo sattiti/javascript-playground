@@ -1,14 +1,28 @@
-const path                = require('path');
-const webpack             = require('webpack');
-const TerserPlugin        = require('terser-webpack-plugin');
-const { VueLoaderPlugin } = require("vue-loader");
+const path = require('path')
+const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const mode = 'development'
+
 module.exports = {
-  mode: 'development',
+  cache: true,
+
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 500,
+  },
+
+  mode: mode,
+  
   // target: 'node',
+  
   entry: [
-    'babel-polyfill',
+    'core-js/stable',
     path.resolve('src', 'main.js')
   ],
 
@@ -20,8 +34,11 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
-    new VueLoaderPlugin()
-    // new HtmlWebpackPlugin()]
+    new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin(),
+    new HardSourceWebpackPlugin(),
+    new Dotenv({path: './.env', systemvars: true}),
+    // new HtmlWebpackPlugin()
   ],
 
   module: {
@@ -46,6 +63,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(sass|scss)$/,
         use: [
           'vue-style-loader',
@@ -53,10 +74,13 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sassOptions:{
+              implementation: require('sass'),
+              additionalData: "@import './src/sass/variables.sass'",
+              sassOptions: {
+                fiber: require('fibers'),
+                indentedSyntax: true,
                 outputStyle: 'compressed',
-                sourceMap: false,
-                indentedSyntax: true
+                sourceMap: false
               }
             }
           }
@@ -69,18 +93,31 @@ module.exports = {
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: {
+          cache: false,
+          fix: false,
+        }
+      },
+      {
+        test: /.(js|jsx)$/,
+        exclude: /node_modules/,
         include: [path.resolve(__dirname, './src')],
         loader: 'babel-loader',
-
         options: {
-          plugins: ['syntax-dynamic-import'],
-
+          plugins: ['@babel/plugin-syntax-dynamic-import'],
           presets: [
             [
               '@babel/preset-env',
-              // {
-              //   modules: false
-              // }
+              {
+                targets: '> 0.25%, not dead',
+                // {
+                  // esmodules: false
+                // },
+                useBuiltIns: 'entry',
+                corejs: 3,
+              }
             ]
           ]
         }
@@ -89,7 +126,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.vue', '.json', 'jsx'],
+    extensions: ['.js', '.vue', '.json', '.jsx', '.sass'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
     }
